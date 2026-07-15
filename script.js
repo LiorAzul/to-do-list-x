@@ -1,4 +1,6 @@
 const STORAGE_KEY = 'my-todo-tasks';
+const THEME_KEY = 'my-todo-theme-index';
+const THEMES = ['theme-red', 'theme-purple', 'theme-blue', 'theme-green'];
 let tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 let currentFilter = 'all';
 
@@ -8,6 +10,14 @@ const list = document.querySelector('#task-list');
 const emptyState = document.querySelector('#empty-state');
 const count = document.querySelector('#task-count');
 
+function applyNextTheme() {
+  const savedIndex = Number(localStorage.getItem(THEME_KEY) || '-1');
+  const nextIndex = (savedIndex + 1) % THEMES.length;
+  document.body.classList.add(THEMES[nextIndex]);
+  localStorage.setItem(THEME_KEY, String(nextIndex));
+}
+
+applyNextTheme();
 document.querySelector('#today').textContent = new Intl.DateTimeFormat('he-IL', { dateStyle: 'full' }).format(new Date());
 
 function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); }
