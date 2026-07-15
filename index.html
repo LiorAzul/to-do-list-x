@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>רשימת המשימות שלי</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" aria-labelledby="page-title">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">ניהול משימות</p>
+        <h1 id="page-title">רשימת המשימות שלי</h1>
+        <p class="subtitle">תכננו את היום, משימה אחת בכל פעם.</p>
+      </div>
+      <div class="date" id="today"></div>
+    </header>
+
+    <section class="panel" aria-label="הוספת משימה">
+      <form id="task-form">
+        <label class="sr-only" for="task-input">משימה חדשה</label>
+        <input id="task-input" type="text" placeholder="מה צריך לעשות?" maxlength="120" autocomplete="off" required />
+        <button type="submit">+ הוספת משימה</button>
+      </form>
+      <div class="toolbar">
+        <span id="task-count">0 משימות</span>
+        <div class="filters" role="group" aria-label="סינון משימות">
+          <button class="filter active" data-filter="all">הכול</button>
+          <button class="filter" data-filter="active">פעילות</button>
+          <button class="filter" data-filter="completed">הושלמו</button>
+        </div>
+      </div>
+    </section>
+
+    <ul id="task-list" class="task-list" aria-live="polite"></ul>
+    <div id="empty-state" class="empty-state">
+      <div class="empty-icon">✓</div>
+      <h2>אין כאן משימות</h2>
+      <p>הוסיפו את המשימה הראשונה שלכם למעלה.</p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
